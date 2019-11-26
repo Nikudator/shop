@@ -15,4 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <code><?= __FILE__ ?></code>
+
+    <?= $_SERVER['REMOTE_ADDR']?>
+
+
 </div>
