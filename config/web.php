@@ -50,6 +50,7 @@ $config = [
         'user' => [
             'class' => 'dektrium\user\Module',
             'enableConfirmation' => false,
+            'admins' => ['admin'],
         ],
     ],
     'params' => $params,
@@ -60,15 +61,13 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
-        // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['25.138.242.194', '::1'],
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
-        // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['25.138.242.194', '::1'],
     ];
 }
 
