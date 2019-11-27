@@ -23,10 +23,10 @@ class m191127_045040_create_item_table extends Migration
             'manufacturer_id' => $this->integer()->notNull(),
             'is_pack' => $this->notNull()->boolean(),
             'price' => $this->decimal()->notNull(),
-            'created_at' => $this->date()->notNull(),
-            'updated_at' => $this->date()->notNull(),
+            'created_at' => $this->integer(),
+            'updated_at' => $this->integer(),
             'active' => $this->boolean()->defaultValue(true)->notNull(),
-            'picture' => $this->string()()->notNull(),
+            'picture' => $this->string()->notNull(),
         ]);
 
         // creates index for column `manufacturer_id`
