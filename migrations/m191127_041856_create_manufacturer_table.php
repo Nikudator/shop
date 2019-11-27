@@ -18,10 +18,15 @@ class m191127_041856_create_manufacturer_table extends Migration
             'country' => $this->string()->notNull(),
         ]);
         $this->createIndex(
-            'name',
-            'country',
+            '{{%idx-name-manufacturer}}',
+            '{{%manufacturer}}',
+            'name'
         );
-    }
+        $this->createIndex(
+            '{{%idx-country-manufacturer}}',
+            '{{%manufacturer}}',
+            'country'
+        );         }
 
     /**
      * {@inheritdoc}
