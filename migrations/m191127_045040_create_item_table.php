@@ -22,7 +22,6 @@ class m191127_045040_create_item_table extends Migration
             'description' => $this->text()->notNull(),
             'manufacturer_id' => $this->integer()->notNull(),
             'unit_id' => $this->notNull()->integer(),
-            'body' => $this->text()->notNull(),
             'price' => $this->float()->notNull(),
             'date' => $this->timestamp()->notNull(),
             'active' => $this->boolean()->defaultValue(true)->notNull(),

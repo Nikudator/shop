@@ -14,7 +14,13 @@ class m191127_041856_create_manufacturer_table extends Migration
     {
         $this->createTable('{{%manufacturer}}', [
             'id' => $this->primaryKey(),
+            'name' => $this->string()->notNull(),
+            'country' => $this->string()->notNull(),
         ]);
+        $this->createIndex(
+            'name',
+            'country',
+        );
     }
 
     /**

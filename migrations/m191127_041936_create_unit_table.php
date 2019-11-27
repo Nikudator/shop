@@ -14,7 +14,11 @@ class m191127_041936_create_unit_table extends Migration
     {
         $this->createTable('{{%unit}}', [
             'id' => $this->primaryKey(),
+            'name' => $this->string()->notNull(),
         ]);
+        $this->createIndex(
+            'name',
+        );
     }
 
     /**
