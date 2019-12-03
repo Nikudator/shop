@@ -50,15 +50,6 @@ class m191203_164622_create_item_table extends Migration
             'pack_id'
         );
 
-        // add foreign key for table `{{%unit}}`
-        $this->addForeignKey(
-            '{{%fk-item-pack_id}}',
-            '{{%item}}',
-            'pack_id',
-            '{{%unit}}',
-            'id',
-            'CASCADE'
-        );
     }
 
     /**
