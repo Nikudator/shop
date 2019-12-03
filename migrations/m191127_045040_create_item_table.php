@@ -20,16 +20,11 @@ class m191127_045040_create_item_table extends Migration
             'id' => $this->primaryKey(),
             'title' => $this->string(100)->notNull()->unique(),
             'description' => $this->text()->notNull(),
+            'sku' => $this->text(10)->notNull(),
             'manufacturer_id' => $this->integer()->notNull(),
-            'is_pack' => $this->notNull()->boolean(),
-            'weight_pack' => $this->integer()->notNull(),
-            'quantity_weight' => $this->intege()->notNull(),
-            'quantity_pack' => $this->integel()->notNull(),
-            'price' => $this->decimal()->notNull(),
             'created_at' => $this->integer(),
             'updated_at' => $this->integer(),
             'active' => $this->boolean()->defaultValue(true)->notNull(),
-            'picture' => $this->string()->notNull(),
         ]);
 
         // creates index for column `manufacturer_id`
