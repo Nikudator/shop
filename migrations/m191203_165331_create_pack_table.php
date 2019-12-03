@@ -14,10 +14,10 @@ class m191203_165331_create_pack_table extends Migration
     {
         $this->createTable('{{%pack}}', [
             'id' => $this->primaryKey(),
-            'weight_pack' => $this->decimal()()->notNull(),
-            'quantity' => $this->decimal()()->notNull(),
-            'price' => $this->decimal()()->notNull(),
-            'picture' => $this->string()()->notNull(),
+            'weight_pack' => $this->decimal()->notNull(),
+            'quantity' => $this->decimal()->notNull(),
+            'price' => $this->decimal()->notNull(),
+            'picture' => $this->string()->notNull(),
             'is_pack' => $this->boolean()->defaultValue(false)->notNull(),
         ]);
     }
