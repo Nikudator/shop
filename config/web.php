@@ -52,6 +52,9 @@ $config = [
             'enableConfirmation' => false,
             'admins' => ['admin'],
         ],
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+        ],
     ],
     'params' => $params,
 ];
