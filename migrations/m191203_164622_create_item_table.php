@@ -21,7 +21,7 @@ class m191203_164622_create_item_table extends Migration
             'title' => $this->string(100)->notNull()->unique(),
             'description' => $this->text()->notNull(),
             'manufacturer_id' => $this->integer()->notNull(),
-            'pack_id' => $this->notNull()->integer(),
+            'pack_id' => $this->integer()->notNull(),
             'sku' => $this->string(10)->notNull(),
             'active' => $this->boolean()->defaultValue(true)->notNull(),
         ]);
