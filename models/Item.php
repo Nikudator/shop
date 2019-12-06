@@ -11,11 +11,9 @@ use Yii;
  * @property string $title
  * @property string $description
  * @property int $manufacturer_id
- * @property int $pack_id
- * @property string $sku
- * @property int $active
  *
  * @property Manufacturer $manufacturer
+ * @property Pack[] $packs
  */
 class Item extends \yii\db\ActiveRecord
 {
@@ -33,11 +31,10 @@ class Item extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'manufacturer_id', 'pack_id', 'sku'], 'required'],
+            [['title', 'description', 'manufacturer_id'], 'required'],
             [['description'], 'string'],
-            [['manufacturer_id', 'pack_id', 'active'], 'integer'],
+            [['manufacturer_id'], 'integer'],
             [['title'], 'string', 'max' => 100],
-            [['sku'], 'string', 'max' => 10],
             [['title'], 'unique'],
             [['manufacturer_id'], 'exist', 'skipOnError' => true, 'targetClass' => Manufacturer::className(), 'targetAttribute' => ['manufacturer_id' => 'id']],
         ];
@@ -53,9 +50,6 @@ class Item extends \yii\db\ActiveRecord
             'title' => 'Title',
             'description' => 'Description',
             'manufacturer_id' => 'Manufacturer ID',
-            'pack_id' => 'Pack ID',
-            'sku' => 'Sku',
-            'active' => 'Active',
         ];
     }
 
@@ -65,5 +59,13 @@ class Item extends \yii\db\ActiveRecord
     public function getManufacturer()
     {
         return $this->hasOne(Manufacturer::className(), ['id' => 'manufacturer_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPacks()
+    {
+        return $this->hasMany(Pack::className(), ['item_id' => 'id']);
     }
 }

@@ -17,8 +17,8 @@ class ItemSearch extends Item
     public function rules()
     {
         return [
-            [['id', 'manufacturer_id', 'pack_id', 'active'], 'integer'],
-            [['title', 'description', 'sku'], 'safe'],
+            [['id', 'manufacturer_id'], 'integer'],
+            [['title', 'description'], 'safe'],
         ];
     }
 
@@ -60,13 +60,10 @@ class ItemSearch extends Item
         $query->andFilterWhere([
             'id' => $this->id,
             'manufacturer_id' => $this->manufacturer_id,
-            'pack_id' => $this->pack_id,
-            'active' => $this->active,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'sku', $this->sku]);
+            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

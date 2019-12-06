@@ -7,9 +7,8 @@ use yii\db\Migration;
  * Has foreign keys to the tables:
  *
  * - `{{%manufacturer}}`
- * - `{{%unit}}`
  */
-class m191203_164622_create_item_table extends Migration
+class m191206_181529_create_item_table extends Migration
 {
     /**
      * {@inheritdoc}
@@ -21,9 +20,6 @@ class m191203_164622_create_item_table extends Migration
             'title' => $this->string(100)->notNull()->unique(),
             'description' => $this->text()->notNull(),
             'manufacturer_id' => $this->integer()->notNull(),
-            'pack_id' => $this->integer()->notNull(),
-            'sku' => $this->string(10)->notNull(),
-            'active' => $this->boolean()->defaultValue(true)->notNull(),
         ]);
 
         // creates index for column `manufacturer_id`
@@ -42,14 +38,6 @@ class m191203_164622_create_item_table extends Migration
             'id',
             'CASCADE'
         );
-
-        // creates index for column `pack_id`
-        $this->createIndex(
-            '{{%idx-item-pack_id}}',
-            '{{%item}}',
-            'pack_id'
-        );
-
     }
 
     /**
@@ -66,18 +54,6 @@ class m191203_164622_create_item_table extends Migration
         // drops index for column `manufacturer_id`
         $this->dropIndex(
             '{{%idx-item-manufacturer_id}}',
-            '{{%item}}'
-        );
-
-        // drops foreign key for table `{{%unit}}`
-        $this->dropForeignKey(
-            '{{%fk-item-pack_id}}',
-            '{{%item}}'
-        );
-
-        // drops index for column `pack_id`
-        $this->dropIndex(
-            '{{%idx-item-pack_id}}',
             '{{%item}}'
         );
 

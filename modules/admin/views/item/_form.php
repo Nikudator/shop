@@ -18,12 +18,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'manufacturer_id')->textInput() ?>
 
-    <?= $form->field($model, 'pack_id')->textInput() ?>
-
-    <?= $form->field($model, 'sku')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'active')->textInput() ?>
-
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

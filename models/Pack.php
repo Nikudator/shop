@@ -8,11 +8,14 @@ use Yii;
  * This is the model class for table "pack".
  *
  * @property int $id
- * @property float $weight_pack
- * @property float $quantity
+ * @property int $item_id
+ * @property int $quantity
  * @property float $price
- * @property string $picture
  * @property int $is_pack
+ * @property int $pack_weight
+ * @property string $picture
+ *
+ * @property Item $item
  */
 class Pack extends \yii\db\ActiveRecord
 {
@@ -30,10 +33,11 @@ class Pack extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['weight_pack', 'quantity', 'price', 'picture'], 'required'],
-            [['weight_pack', 'quantity', 'price'], 'number'],
-            [['is_pack'], 'integer'],
+            [['item_id', 'quantity', 'price', 'pack_weight', 'picture'], 'required'],
+            [['item_id', 'quantity', 'is_pack', 'pack_weight'], 'integer'],
+            [['price'], 'number'],
             [['picture'], 'string', 'max' => 255],
+            [['item_id'], 'exist', 'skipOnError' => true, 'targetClass' => Item::className(), 'targetAttribute' => ['item_id' => 'id']],
         ];
     }
 
@@ -44,11 +48,20 @@ class Pack extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'weight_pack' => 'Weight Pack',
+            'item_id' => 'Item ID',
             'quantity' => 'Quantity',
             'price' => 'Price',
-            'picture' => 'Picture',
             'is_pack' => 'Is Pack',
+            'pack_weight' => 'Pack Weight',
+            'picture' => 'Picture',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getItem()
+    {
+        return $this->hasOne(Item::className(), ['id' => 'item_id']);
     }
 }
