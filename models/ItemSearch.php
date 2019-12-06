@@ -1,15 +1,15 @@
 <?php
 
-namespace app\modules\admin\controllers;
+namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Manufacturer;
+use app\models\Item;
 
 /**
- * ManufacturerSearch represents the model behind the search form of `app\models\Manufacturer`.
+ * ItemSearch represents the model behind the search form of `app\models\Item`.
  */
-class ManufacturerSearch extends Manufacturer
+class ItemSearch extends Item
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class ManufacturerSearch extends Manufacturer
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['name', 'country'], 'safe'],
+            [['id', 'manufacturer_id', 'pack_id', 'active'], 'integer'],
+            [['title', 'description', 'sku'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class ManufacturerSearch extends Manufacturer
      */
     public function search($params)
     {
-        $query = Manufacturer::find();
+        $query = Item::find();
 
         // add conditions that should always apply here
 
@@ -59,10 +59,14 @@ class ManufacturerSearch extends Manufacturer
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'manufacturer_id' => $this->manufacturer_id,
+            'pack_id' => $this->pack_id,
+            'active' => $this->active,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'country', $this->country]);
+        $query->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', 'sku', $this->sku]);
 
         return $dataProvider;
     }
