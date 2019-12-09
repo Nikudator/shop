@@ -54,6 +54,7 @@ $config = [
         ],
         'admin' => [
             'class' => 'app\modules\admin\Module',
+	    'layout' => 'main',
         ],
     ],
     'params' => $params,
