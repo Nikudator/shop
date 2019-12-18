@@ -44,6 +44,7 @@ class ItemSearch extends Item
     {
         $query = Item::find();
         $query->joinWith(['manufacturer']);
+        $query->joinWith(['country']);
 
         // add conditions that should always apply here
 
