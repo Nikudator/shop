@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\PackSearch */
+/* @var $model app\modules\admin\controllers\PackSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -28,6 +28,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'pack_weight') ?>
 
     <?php // echo $form->field($model, 'picture') ?>
+
+    <?php // echo $form->field($model, 'weight_pack') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\PackSearch */
+/* @var $searchModel app\modules\admin\controllers\PackSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Packs';
@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'is_pack',
             //'pack_weight',
             //'picture',
+            //'weight_pack',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
