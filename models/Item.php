@@ -63,7 +63,7 @@ class Item extends \yii\db\ActiveRecord
 
     public function getCountry()
     {
-        return $this->hasOne(Country::className(), ['id' => 'manufacturer_id']);
+        return $this->hasOne(Manufacturer::className(), ['id' => 'manufacturer_id']);
     }
     /**
      * @return \yii\db\ActiveQuery
