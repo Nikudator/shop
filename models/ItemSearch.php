@@ -11,6 +11,8 @@ use app\models\Item;
  */
 class ItemSearch extends Item
 {
+    public $manufacturer;
+    public $country;
     /**
      * {@inheritdoc}
      */
