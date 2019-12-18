@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'title',
             'description:ntext',
-            'manufacturer_id',
+            ['attribute' => 'manufacturer','label' => 'Manufacturer', 'value'=>'manufacturer.name'],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

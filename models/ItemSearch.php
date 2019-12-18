@@ -18,7 +18,7 @@ class ItemSearch extends Item
     {
         return [
             [['id', 'manufacturer_id'], 'integer'],
-            [['title', 'description'], 'safe'],
+            [['title', 'description', 'country', 'manufacturer'], 'safe'],
         ];
     }
 
@@ -41,13 +41,21 @@ class ItemSearch extends Item
     public function search($params)
     {
         $query = Item::find();
+        $query->joinWith(['manufacturer']);
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-
+        $dataProvider->sort->attributes['manufacturer'] = [
+            'asc' => [Manufacturer::tableName().'.name' => SORT_ASC],
+            'desc' => [Manufacturer::tableName().'.name' => SORT_DESC],
+        ];
+        $dataProvider->sort->attributes['manufacturer'] = [
+            'asc' => [Manufacturer::tableName().'.country' => SORT_ASC],
+            'desc' => [Manufacturer::tableName().'.country' => SORT_DESC],
+        ];
         $this->load($params);
 
         if (!$this->validate()) {
@@ -63,7 +71,9 @@ class ItemSearch extends Item
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'description', $this->description]);
+            ->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', Manufacturer::tableName().'.name', $this->manufacturer])
+            ->andFilterWhere(['like', Manufacturer::tableName().'.country', $this->country]);
 
         return $dataProvider;
     }
