@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'description:ntext',
             ['attribute' => 'manufacturer','label' => 'Manufacturer', 'value'=>'manufacturer.name'],
-
+            ['attribute' => 'manufacturer','label' => 'Country', 'value'=>'manufacturer.country'],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
