@@ -43,8 +43,7 @@ class ItemSearch extends Item
     public function search($params)
     {
         $query = Item::find();
-        $query->joinWith(['manufacturer'],
-            ->joinWith['country']);
+        $query->joinWith(['manufacturer']);
 
         // add conditions that should always apply here
 
