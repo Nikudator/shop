@@ -43,7 +43,8 @@ class ItemSearch extends Item
     public function search($params)
     {
         $query = Item::find();
-        $query->joinWith(['manufacturer']);
+        $query->joinWith(['manufacturer'],
+            ->joinWith['country']);
 
         // add conditions that should always apply here
 
@@ -54,7 +55,7 @@ class ItemSearch extends Item
             'asc' => [Manufacturer::tableName().'.name' => SORT_ASC],
             'desc' => [Manufacturer::tableName().'.name' => SORT_DESC],
         ];
-        $dataProvider->sort->attributes['manufacturer'] = [
+        $dataProvider->sort->attributes['country'] = [
             'asc' => [Manufacturer::tableName().'.country' => SORT_ASC],
             'desc' => [Manufacturer::tableName().'.country' => SORT_DESC],
         ];
